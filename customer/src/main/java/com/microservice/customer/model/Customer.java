@@ -24,7 +24,7 @@ import javax.validation.constraints.*;
         @NotNull(message = "please enter your correct name")
         private String name;
         @NotNull(message="please enter the orders")
-        private String checkout;
+        private String product;
         @NotNull(message =" Please enter the price")
         @Positive
         private int price;

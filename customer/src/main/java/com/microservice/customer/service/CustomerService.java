@@ -15,8 +15,8 @@ public interface CustomerService {
 
     public List<Customer> getAllProducts();
 
-
-
+    @GetMapping("/Product/getProduct/{id}")
+    public Customer getProductById(int id);
 
 /*@FeignClient(name = "BANK-SERVICE")
 public interface BankRestConsumer {
