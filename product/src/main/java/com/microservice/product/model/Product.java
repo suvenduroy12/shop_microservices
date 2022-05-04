@@ -30,7 +30,7 @@ public class Product{
     private String name;
    @NotNull(message =" Please enter the order")
    //@JsonIgnoreProperties(value = "checkout", allowSetters = true)
-    private String checkout;
+    private String product;
     @NotNull(message =" Please enter the price")
     //@JsonIgnoreProperties(value = "price", allowSetters = true)
     @Positive
