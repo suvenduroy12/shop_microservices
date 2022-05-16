@@ -113,41 +113,6 @@ public class ProductControllerTest {
         when(productService.getById(3)).thenReturn(product);
         final var responseEntity=productController.deleteProduct(3);
         assertEquals(responseEntity.getStatusCode(), OK);
-
-
     }
-/*
-    @Test
-    public void getAllProductTest() {
-        Product product = Product.builder()
-                .id(3)
-                .name("Suvendu")
-                .product("Coffee")
-                .price(100)
-                .build();
-        when(productService.getAll())
-                .thenReturn((List<Product>)
-                        Stream.of(product)
-                                .collect(Collectors.toList()));
-
-        assertEquals(1, productController.getAllProduct().size());
-    }
-
- */
-/*
-    @Test
-    public void getProductByIdTest() {
-        Product product = Product.builder()
-
-                .name("Suvendu")
-                .product("Coffee")
-                .price(100)
-                .build();
-
-        when(productService.getById(3)).thenReturn(product);
-        assertEquals(product, productController.getById(3));
-
-    }*/
-
 
 }
