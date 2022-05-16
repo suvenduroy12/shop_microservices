@@ -66,8 +66,4 @@ public class ProductServiceImpl implements ProductService{
             throw new RecordNotFoundException("Product id does not exist");
         }
     }
-
-
-
-
 }
