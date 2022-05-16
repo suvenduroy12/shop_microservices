@@ -45,7 +45,6 @@ public class ProductController {
         }
         return response;
 
-        //return productService.getById(id);
     }
 
     @PostMapping("/addProduct")
@@ -73,18 +72,9 @@ public class ProductController {
 
     @DeleteMapping("delProduct/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable int id) {
-
-        //return productService.removeProduct(id);
-        ResponseEntity<Product> response = null;
-        Product product = productService.getById(id);
-        if (product == null) {
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            productService.removeProduct(id);
-            response = new ResponseEntity<>(product, HttpStatus.OK);
-            //logger.info("-------Movie With Movie id " + movieId + " Deleted---------");
-        }
-        return response;
+        
+        productService.removeProduct(id);
+        return new ResponseEntity<Product>(HttpStatus.OK);
     }
 
 
