@@ -13,11 +13,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 //@ExtendWith(SpringExtension.class)
@@ -70,8 +71,13 @@ public class ProductServiceTest {
                 .price(100)
                 .build();
 
-        when(productRepository.save(product1)).thenReturn(product1);
-        assertEquals(product1, productService.updateProduct(product2));
+        Optional <Product> prd= Optional.of(product2);
+        when (productRepository.findById(2)).thenReturn(prd);
+
+        assertNotEquals(product1.getName(),prd.get().getName());
+
+        when(productRepository.save(product2)).thenReturn(product2);
+        assertEquals(product2, productService.updateProduct(product2));
     }
 
 
@@ -100,6 +106,9 @@ public class ProductServiceTest {
                 .price(100)
                 .build();
 
+        Optional <Product> prd= Optional.of(product);
+        when (productRepository.findById(2)).thenReturn(prd);
+
         when(productRepository.getById(2)).thenReturn(product);
         assertEquals(product, productService.getById(2));
     }
@@ -114,7 +123,13 @@ public class ProductServiceTest {
                 .price(100)
                 .build();
 
-        when(productRepository.getById(2)).thenReturn(product);
+        Optional <Product> prd= Optional.of(product);
+        when (productRepository.findById(2)).thenReturn(prd);
+
+        //when(productRepository.deleteById(2)).equals(null);
+        assertEquals(product.getId(), prd.get().getId());
+
+        //verify(productRepository).deleteById(2);
         assertEquals(product, productService.removeProduct(2));
     }
 }
